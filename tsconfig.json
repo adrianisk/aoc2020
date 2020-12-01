@@ -1,0 +1,80 @@
+{
+    // NEW: Options for file/directory watching
+    "watchOptions": {
+        // Use native file system events for files and directories
+        "watchFile": "useFsEvents",
+        "watchDirectory": "useFsEvents",
+        // Poll files for updates more frequently
+        // when they're updated a lot.
+        "fallbackPolling": "dynamicPriority"
+    },
+    "compilerOptions": {
+        // Emitting .d.ts files is generally a good practice: it's required for all
+        // library code, and we tend to break our applications into multiple
+        // (composite) compilation units, too.
+        "declaration": true,
+        // Emits a source map for each declaration map, allowing tooling to better
+        // follow our compiled output.
+        "declarationMap": true,
+        // typeorm makes extensive use of decorators.
+        "emitDecoratorMetadata": true,
+        // Provides more natural imports of CommonJS modules; and uses different
+        // helper methods (via tslib).
+        "esModuleInterop": true,
+        // We like decorators, and are willing to take on pain due to the decorator
+        // spec being in flux.
+        "experimentalDecorators": true,
+        // Consistent casing is cleaner and allows for development between
+        // operating systems.
+        "forceConsistentCasingInFileNames": true,
+        // By consistently importing tslib across our projects, we can pretty
+        // dramatically cut down on the size of compiled code.
+        "importHelpers": true,
+        // Ensure that all builds generate and consume incremental build info.
+        "incremental": true,
+        // Emit source maps so that debug tooling can trace back to original code.
+        //
+        // TODO: Switch back to sourceMap when we can. For now, inlineSourceMap
+        // seems to have better tooling support. Inverting these appears to break:
+        // vs.code breakpoints in TS, raven-sentry source maps.
+        "inlineSourceMap": true,
+        "lib": [
+            // Native Node 10 functionality.
+            "es2016",
+            "es2017",
+            "es2018",
+            "esnext.bigint",
+            "esnext.intl",
+            // TypeScript downlevels async iterators for us.
+            "esnext.asynciterable",
+            // This is arguable, but nearly all of our projects rely on it, and
+            // TypeScript does not support merging `lib` lists when extending.
+            "dom"
+        ],
+        // Node 10 doesn't support ES modules.
+        "module": "commonjs",
+        // Infer shapes of JSON modules from their source.
+        "resolveJsonModule": true,
+        // Node 10 supports all ES2018 syntatic features.
+        "target": "es2018",
+        /**
+         * Style options enforced by the compiler.
+         */
+        // Our projects assume a *nix environment.
+        "newLine": "lf",
+        // Always include a `break` in each `case`.
+        "noFallthroughCasesInSwitch": true,
+        // If you want to use `any`, be explicit about it.
+        "noImplicitAny": true,
+        // Helps catch cases where we forgot to return something.
+        "noImplicitReturns": true,
+        // Helps catch ambiguous callbacks.
+        "noImplicitThis": true,
+        // Clean up your dead code!
+        "noUnusedLocals": true,
+        // Clean up your dead API! (or prefix with _ to indicate a placholder).
+        "noUnusedParameters": true,
+        // Enable all of TypeScript's strict checks.
+        "strict": true
+    }
+}
