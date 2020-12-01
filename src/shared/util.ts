@@ -1,5 +1,7 @@
 import * as fs from 'fs';
 
-export function readFile(path: string): string[] {
-    return fs.readFileSync(path, 'utf8').toString().split('\n');
+// TODO: don't be lazy if the input files get big
+export function readInputFileForDay(day: number): string[] {
+    console.log(`Reading input for day ${day}...`);
+    return fs.readFileSync(`./input/day${day}.txt`, 'utf8').toString().split('\n');
 }
